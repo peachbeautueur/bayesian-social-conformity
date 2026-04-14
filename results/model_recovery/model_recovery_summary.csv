@@ -1,0 +1,5 @@
+recovery_cell,generating_dataset,fitted_model,estimated_sigma,estimated_w_direct,estimated_w_social,divergences,R_hat_max
+SBA_data__SBA_fit,SBA_data,SBA,0.581864,,,,1.00287
+SBA_data__WBA_fit,SBA_data,WBA,0.582024,1.00237,1.00574,,1.00383
+WBA_data__WBA_fit,WBA_data,WBA,0.572148,0.389997,1.61045,,1.00311
+WBA_data__SBA_fit,WBA_data,SBA,1.03962,,,,1.00288
