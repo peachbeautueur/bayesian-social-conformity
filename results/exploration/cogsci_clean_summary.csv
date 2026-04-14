@@ -1,0 +1,2 @@
+filename,n_rows,n_columns,n_missing_total,n_unique_participants,n_unique_faces,participant_trials_mean,participant_trials_min,participant_trials_max,FirstRating_outside_1_8,GroupRating_outside_1_8,SecondRating_outside_1_8
+cogsci_clean.csv,3520,10,440,44,80,80.0,80,80,0,440,0

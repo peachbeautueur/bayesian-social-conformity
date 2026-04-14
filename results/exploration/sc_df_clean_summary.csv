@@ -1,0 +1,2 @@
+filename,n_rows,n_columns,n_missing_total,n_unique_participants,n_unique_faces,participant_trials_mean,participant_trials_min,participant_trials_max,FirstRating_outside_1_8,GroupRating_outside_1_8,SecondRating_outside_1_8
+sc_df_clean.csv,2971,13,373,38,80,78.1842105263158,27,80,0,373,0

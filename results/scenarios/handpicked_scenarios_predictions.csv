@@ -1,0 +1,6 @@
+scenario,FirstRating,GroupRating,social_gap,SBA_predicted_second_rating_continuous,SBA_predicted_second_rating_rounded,SBA_predicted_change,WBA_balanced_predicted_second_rating_continuous,WBA_balanced_predicted_second_rating_rounded,WBA_balanced_predicted_change,WBA_self_focused_predicted_second_rating_continuous,WBA_self_focused_predicted_second_rating_rounded,WBA_self_focused_predicted_change,WBA_socially_influenced_predicted_second_rating_continuous,WBA_socially_influenced_predicted_second_rating_rounded,WBA_socially_influenced_predicted_change
+agreement,4,4,0,4.0625,4,0.0625,4.0625,4,0.0625,4.0625,4,0.0625,4.051282051282051,4,0.0512820512820511
+small positive disagreement,4,5,1,4.5,4,0.5,4.5,4,0.5,4.28125,4,0.28125,4.769230769230769,5,0.7692307692307692
+small negative disagreement,5,4,-1,4.5,4,-0.5,4.5,4,-0.5,4.71875,5,-0.28125,4.230769230769231,4,-0.7692307692307692
+large positive disagreement,2,7,5,4.5,4,2.5,4.5,4,2.5,3.40625,3,1.40625,5.846153846153846,6,3.846153846153846
+large negative disagreement,7,2,-5,4.5,4,-2.5,4.5,4,-2.5,5.59375,6,-1.40625,3.153846153846154,3,-3.846153846153846

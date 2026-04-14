@@ -1,0 +1,2 @@
+filename,n_rows,n_columns,n_missing_total,n_unique_participants,n_unique_faces,participant_trials_mean,participant_trials_min,participant_trials_max,FirstRating_outside_1_8,GroupRating_outside_1_8,SecondRating_outside_1_8
+Simonsen_clean.csv,6120,10,0,40,153,153.0,153,153,0,0,0
