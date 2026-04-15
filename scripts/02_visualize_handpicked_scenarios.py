@@ -1,10 +1,8 @@
-"""Visualize SBA and WBA predictions for five hand-picked scenarios.
+"""Visualize SBA and WBA predictions for five selected scenarios.
 
-This script keeps the lecture-inspired beta-update logic from the prototype
-agent definitions and applies it only to a small set of illustrative
-trustworthiness-rating scenarios. The goal is to show how SBA and different WBA
-weight settings behave under agreement, small disagreement, and large
-boundary-relevant disagreement.
+This script keeps the beta update logic from the prototype agents.
+It applies that logic to a small set of trust rating scenarios.
+The goal is to show how SBA and different WBA settings behave.
 
 Run from the project root:
     python scripts/02_visualize_handpicked_scenarios.py
@@ -131,7 +129,7 @@ def build_handpicked_scenarios() -> pd.DataFrame:
 
 
 def build_scenario_table() -> pd.DataFrame:
-    """Compute SBA and WBA predictions for the five hand-picked scenarios."""
+    """Compute SBA and WBA predictions for the five selected scenarios."""
     scenarios = build_handpicked_scenarios()
 
     scenario_table = scenarios.copy()
@@ -291,7 +289,7 @@ def save_predicted_change_plot(df: pd.DataFrame, output_path: Path) -> None:
 
 
 def main() -> None:
-    """Run the hand-picked scenario visualization workflow."""
+    """Run the scenario plot workflow."""
     project_root = Path(__file__).resolve().parents[1]
     results_dir = project_root / "results" / "scenarios"
     figures_dir = project_root / "figures" / "scenarios"

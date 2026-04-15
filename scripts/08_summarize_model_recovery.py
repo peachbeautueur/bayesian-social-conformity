@@ -1,8 +1,8 @@
-"""Summarize the 2x2 synthetic model-recovery results.
+"""Summarize the 2x2 synthetic model recovery results.
 
-This script reads the saved posterior summaries from the completed recovery
-fits, builds a compact comparison table, prints it to the terminal, and saves
-it for later reporting.
+This script reads the saved posterior summaries from the recovery fits.
+It builds a compact comparison table.
+It prints the table and saves it for later reporting.
 
 Run from the project root:
     python scripts/08_summarize_model_recovery.py
@@ -42,7 +42,7 @@ def extract_parameter_mean(summary_df: pd.DataFrame, parameter: str) -> float | 
 
 
 def extract_rhat_max(full_summary_df: pd.DataFrame) -> float | pd.NA:
-    """Extract the maximum R-hat value from a full Stan summary."""
+    """Extract the maximum R hat value from a full Stan summary."""
     rhat_column = choose_first_available(full_summary_df.columns, ["R_hat", "Rhat", "r_hat"])
     if rhat_column is None:
         return pd.NA
@@ -62,7 +62,7 @@ def build_recovery_row(
     posterior_filename: str,
     full_summary_filename: str,
 ) -> dict:
-    """Build one row of the model-recovery summary table."""
+    """Build one row of the model recovery summary table."""
     posterior_path = fits_dir / posterior_filename
     full_summary_path = fits_dir / full_summary_filename
 
@@ -82,7 +82,7 @@ def build_recovery_row(
 
 
 def build_recovery_summary_table(fits_dir: Path) -> pd.DataFrame:
-    """Assemble the four model-recovery cells into one compact table."""
+    """Assemble the four model recovery cells into one compact table."""
     recovery_specs = [
         {
             "cell_name": "SBA_data__SBA_fit",

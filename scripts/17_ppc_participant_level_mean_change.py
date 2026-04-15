@@ -1,8 +1,8 @@
-"""Create participant-level posterior predictive checks for mean rating change.
+"""Create participant level posterior predictive checks for mean rating change.
 
-This script reuses saved no-pooling empirical Stan outputs for all participants,
-extracts posterior predictive draws (`y_rep`) for SBA and WBA, and summarizes
-participant-level observed versus posterior predictive mean rating change.
+This script reuses saved no pooling empirical Stan outputs for all participants.
+It extracts posterior predictive draws (`y_rep`) for SBA and WBA.
+It summarizes observed and predicted mean rating change for each participant.
 
 Run from the project root:
     python scripts/17_ppc_participant_level_mean_change.py
@@ -118,7 +118,7 @@ def build_summary_table(
     wba_chain_map: dict[int, list[Path]],
     sba_chain_map: dict[int, list[Path]],
 ) -> pd.DataFrame:
-    """Build the participant-level mean change PPC summary table."""
+    """Build the participant level mean change PPC summary table."""
     common_ids = sorted(set(wba_chain_map).intersection(sba_chain_map))
     rows: list[dict[str, float | int]] = []
 
@@ -187,7 +187,7 @@ def save_observed_vs_predicted_plot(summary_df: pd.DataFrame, output_path: Path)
 
 
 def save_residual_histogram(summary_df: pd.DataFrame, output_path: Path) -> None:
-    """Save stacked residual histograms for SBA and WBA using the same x-axis range."""
+    """Save stacked residual histograms for SBA and WBA with the same x axis range."""
     wba_residuals = summary_df["wba_residual"].to_numpy(dtype=float)
     sba_residuals = summary_df["sba_residual"].to_numpy(dtype=float)
     all_residuals = np.concatenate([wba_residuals, sba_residuals])
@@ -229,7 +229,7 @@ def save_residual_histogram(summary_df: pd.DataFrame, output_path: Path) -> None
 
 
 def save_side_by_side_point_plot(summary_df: pd.DataFrame, output_path: Path) -> None:
-    """Save a side-by-side participant-level point plot."""
+    """Save a participant level point plot with three series."""
     plot_df = summary_df.sort_values("participant_id").reset_index(drop=True)
     x_positions = np.arange(len(plot_df))
 
@@ -269,7 +269,7 @@ def save_side_by_side_point_plot(summary_df: pd.DataFrame, output_path: Path) ->
 
 
 def main() -> None:
-    """Create participant-level PPC summaries for mean rating change."""
+    """Create participant level PPC summaries for mean rating change."""
     project_root = Path(__file__).resolve().parents[1]
     empirical_path = project_root / "data" / "Simonsen_clean.csv"
     empirical_dir = project_root / "results" / "fits" / "empirical"

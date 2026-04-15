@@ -1,10 +1,9 @@
-"""Visualize simple prior-posterior updates for empirical WBA fits.
+"""Visualize simple prior posterior updates for empirical WBA fits.
 
-This script reads the saved participant-level WBA empirical summary table,
-recreates the weakly informative priors used in `stan/wba_model.stan`, and
-compares those priors with the distribution of participant-level posterior mean
-estimates. It is intended as a transparent, report-friendly summary rather than
-as a full posterior analysis.
+This script reads the saved participant level WBA empirical summary table.
+It recreates the priors used in `stan/wba_model.stan`.
+It compares those priors with the distribution of participant level posterior means.
+It is meant as a simple summary for the report.
 
 Run from the project root:
     python scripts/18_prior_posterior_updates_wba_empirical.py
@@ -42,7 +41,7 @@ def truncated_normal_density(x: np.ndarray, mean: float, sd: float, lower: float
 
 
 def build_summary_table(summary_df: pd.DataFrame) -> pd.DataFrame:
-    """Create a compact prior-posterior summary table."""
+    """Create a compact prior posterior summary table."""
     parameter_specs = [
         {
             "parameter": "w_direct",
@@ -79,7 +78,7 @@ def build_summary_table(summary_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def save_prior_posterior_figure(summary_df: pd.DataFrame, output_path: Path) -> None:
-    """Save a three-panel prior vs posterior-mean comparison figure."""
+    """Save a three panel figure for prior and posterior mean comparison."""
     parameter_specs = [
         {
             "title": "w_direct",
@@ -152,7 +151,7 @@ def save_prior_posterior_figure(summary_df: pd.DataFrame, output_path: Path) -> 
 
 
 def main() -> None:
-    """Create prior-posterior update summaries for empirical WBA fits."""
+    """Create prior posterior update summaries for empirical WBA fits."""
     project_root = Path(__file__).resolve().parents[1]
     summary_path = project_root / "results" / "fits" / "empirical" / "wba_empirical_all_participants_summary.csv"
     results_dir = project_root / "results" / "prior_posterior"

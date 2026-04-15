@@ -1,8 +1,9 @@
 """Fit the Stan SBA model to one empirical participant from Simonsen data.
 
-This script implements the single-participant no-pooling SBA fit by selecting
-participant ID 201 by default, preparing Stan inputs, fitting the existing SBA
-model with cmdstanpy, and saving the resulting summaries.
+This script runs a no pooling test fit for one participant.
+It uses the Simonsen dataset.
+It uses participant ID 201 by default.
+It prepares the Stan input and saves the fit summaries.
 
 Run from the project root:
     python scripts/10_fit_sba_empirical_single_participant.py
@@ -181,13 +182,13 @@ def summarize_posterior(summary: pd.DataFrame) -> pd.DataFrame:
 
 
 def count_divergences(fit) -> int:
-    """Count total divergent transitions across all post-warmup draws."""
+    """Count total divergent transitions across all post warmup draws."""
     sampler_diagnostics = fit.method_variables()
     return int(sampler_diagnostics["divergent__"].sum())
 
 
 def summarize_rhat(fit) -> tuple[float, float]:
-    """Return the max and median R-hat values when available."""
+    """Return the max and median R hat values when available."""
     summary = fit.summary()
     if "R_hat" not in summary.columns:
         return float("nan"), float("nan")

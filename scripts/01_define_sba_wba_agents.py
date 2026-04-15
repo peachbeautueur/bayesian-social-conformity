@@ -1,10 +1,9 @@
-"""Define proof-of-concept SBA and WBA agents for 1-8 rating updates.
+"""Define simple SBA and WBA agents for 1-8 rating updates.
 
-This script adapts the lecture's beta-update logic from binary evidence tasks
-to trustworthiness ratings on a 1-8 scale. Ratings are first mapped to
-probabilities, then treated as pseudo-binomial evidence with fixed evidence
-strength. The goal here is transparency and forward simulation, not model
-fitting.
+This script adapts the lecture beta update logic to 1-8 trust ratings.
+It maps ratings to probabilities.
+It then treats them as pseudo count evidence with fixed strength.
+The goal is a clear forward simulation, not model fitting.
 
 Run from the project root:
     python scripts/01_define_sba_wba_agents.py
@@ -169,7 +168,7 @@ def print_model_notes() -> None:
 
 
 def main() -> None:
-    """Run a simple forward-simulation demonstration for SBA and WBA."""
+    """Run a simple forward simulation demo for SBA and WBA."""
     pd.set_option("display.width", 160)
     pd.set_option("display.max_columns", None)
 

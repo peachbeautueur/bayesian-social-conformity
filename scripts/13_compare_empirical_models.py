@@ -1,8 +1,9 @@
-"""Compare empirical no-pooling SBA and WBA fit summaries across participants.
+"""Compare empirical no pooling SBA and WBA fit summaries across participants.
 
-This script reads the saved participant-level fit summaries, merges them,
-creates a compact comparison table, prints a concise terminal summary, and
-generates a few report-friendly figures.
+This script reads the saved participant level fit summaries.
+It merges them into one comparison table.
+It prints a short terminal summary.
+It makes a few simple figures.
 
 Run from the project root:
     python scripts/13_compare_empirical_models.py
@@ -23,7 +24,7 @@ def ensure_directories(*paths: Path) -> None:
 
 
 def load_summary(csv_path: Path) -> pd.DataFrame:
-    """Load a participant-level empirical fit summary."""
+    """Load a participant level empirical fit summary."""
     if not csv_path.exists():
         raise FileNotFoundError(f"Summary file not found: {csv_path}")
     return pd.read_csv(csv_path)
@@ -135,7 +136,7 @@ def save_sigma_comparison_plot(df: pd.DataFrame, output_path: Path) -> None:
 
 
 def save_sigma_difference_plot(df: pd.DataFrame, output_path: Path) -> None:
-    """Plot the participant-level sigma difference between SBA and WBA."""
+    """Plot the participant level sigma difference between SBA and WBA."""
     plot_df = df.copy()
     fig, ax = plt.subplots(figsize=(10, 5.5))
 

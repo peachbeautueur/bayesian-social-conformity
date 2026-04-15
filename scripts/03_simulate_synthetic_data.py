@@ -1,8 +1,8 @@
-"""Simulate synthetic participant-level data from SBA and WBA agents.
+"""Simulate synthetic data from SBA and WBA agents.
 
-This script reuses the same lecture-inspired beta-update logic defined in the
-prototype SBA and WBA agent script. It creates transparent forward-simulated
-datasets that can later be used for model recovery and Stan fitting.
+This script reuses the beta update logic from the SBA and WBA prototype.
+It creates simple synthetic datasets.
+These datasets can be used later for model recovery and Stan fitting.
 
 Run from the project root:
     python scripts/03_simulate_synthetic_data.py
@@ -113,7 +113,7 @@ def build_base_trials(
     n_participants: int = N_PARTICIPANTS,
     n_trials: int = N_TRIALS,
 ) -> pd.DataFrame:
-    """Create participant-by-trial rows with random first and group ratings."""
+    """Create participant by trial rows with random first and group ratings."""
     participant_ids = np.repeat(
         np.arange(participant_id_start, participant_id_start + n_participants),
         n_trials,

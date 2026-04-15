@@ -1,8 +1,9 @@
 """Compare SBA and WBA for empirical participant 201 using pointwise log_lik.
 
-This script reuses the saved single-participant empirical Stan outputs when
-available, extracts pointwise log likelihood values, computes simple comparison
-metrics, and saves a compact comparison table.
+This script reuses the saved single participant Stan outputs when available.
+It extracts pointwise log likelihood values.
+It computes simple comparison measures.
+It saves a compact comparison table.
 
 Run from the project root:
     python scripts/14_compare_models_empirical_single_participant.py
@@ -34,7 +35,7 @@ def load_cmdstan_chain_csvs(paths: list[Path]) -> pd.DataFrame:
 
 
 def get_latest_chain_paths(results_dir: Path, model_prefix: str) -> list[Path]:
-    """Find the latest saved 4-chain CmdStan output set for a model prefix."""
+    """Find the latest saved four chain CmdStan output set for a model prefix."""
     chain_files = sorted(results_dir.glob(f"{model_prefix}-*_*.csv"))
     if not chain_files:
         raise FileNotFoundError(f"No chain CSV files found for model prefix '{model_prefix}' in {results_dir}")
@@ -92,7 +93,7 @@ def build_model_row(
     model_name: str,
     chain_paths: list[Path],
 ) -> dict:
-    """Build one model-comparison row from saved chain CSV files."""
+    """Build one model comparison row from saved chain CSV files."""
     draws_df = load_cmdstan_chain_csvs(chain_paths)
     log_lik_matrix = extract_log_lik_matrix(draws_df)
     basic_metrics = compute_basic_metrics(log_lik_matrix)
@@ -135,7 +136,7 @@ def print_summary(df: pd.DataFrame) -> None:
 
 
 def main() -> None:
-    """Reuse saved single-participant fits and compare SBA vs WBA for participant 201."""
+    """Reuse saved single participant fits and compare SBA vs WBA for participant 201."""
     project_root = Path(__file__).resolve().parents[1]
     empirical_dir = project_root / "results" / "fits" / "empirical"
     ensure_directories(empirical_dir)

@@ -1,8 +1,8 @@
 """Fit the Stan SBA model separately to all empirical participants.
 
-This script implements a no-pooling empirical analysis for the Simonsen
-dataset. Each participant is fitted separately with the existing SBA Stan
-model, and a compact summary table is saved for later comparison with WBA fits.
+This script runs a no pooling analysis for the Simonsen dataset.
+Each participant is fit separately with the SBA Stan model.
+It saves a compact summary table for later comparison with WBA fits.
 
 Run from the project root:
     python scripts/12_fit_sba_empirical_all_participants.py
@@ -148,7 +148,7 @@ def extract_parameter_mean(summary: pd.DataFrame, parameter: str) -> float | pd.
 
 
 def extract_rhat_max(summary: pd.DataFrame) -> float | pd.NA:
-    """Extract the maximum R-hat value from a full Stan summary."""
+    """Extract the maximum R hat value from a full Stan summary."""
     rhat_col = choose_first_available(summary.columns, ["R_hat", "Rhat", "r_hat"])
     if rhat_col is None:
         return pd.NA
@@ -159,7 +159,7 @@ def extract_rhat_max(summary: pd.DataFrame) -> float | pd.NA:
 
 
 def count_divergences(fit) -> int:
-    """Count total divergent transitions across all post-warmup draws."""
+    """Count total divergent transitions across all post warmup draws."""
     sampler_diagnostics = fit.method_variables()
     return int(sampler_diagnostics["divergent__"].sum())
 

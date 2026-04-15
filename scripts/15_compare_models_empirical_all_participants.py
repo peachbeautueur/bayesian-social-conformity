@@ -1,9 +1,10 @@
-"""Perform empirical participant-level model comparison for SBA vs WBA.
+"""Perform empirical participant level model comparison for SBA vs WBA.
 
-This script reuses saved no-pooling empirical Stan outputs, extracts pointwise
-log likelihood values for each participant and model, computes comparison
-metrics, saves a participant-level comparison table, and creates a small set of
-report-friendly figures.
+This script reuses saved no pooling empirical Stan outputs.
+It extracts pointwise log likelihood values for each participant and model.
+It computes comparison measures.
+It saves a participant level comparison table.
+It creates a small set of figures.
 
 Run from the project root:
     python scripts/15_compare_models_empirical_all_participants.py
@@ -121,7 +122,7 @@ def compute_waic(log_lik_matrix: np.ndarray) -> dict[str, float]:
 
 
 def compute_model_metrics(chain_paths: list[Path]) -> dict[str, float]:
-    """Compute model-comparison metrics from saved chain CSV files."""
+    """Compute model comparison metrics from saved chain CSV files."""
     draws_df = load_cmdstan_chain_csvs(chain_paths)
     log_lik_matrix = extract_log_lik_matrix(draws_df)
     basic_metrics = compute_basic_metrics(log_lik_matrix)
@@ -139,7 +140,7 @@ def build_comparison_table(
     wba_map: dict[int, list[Path]],
     sba_map: dict[int, list[Path]],
 ) -> pd.DataFrame:
-    """Build the participant-level empirical model-comparison table."""
+    """Build the participant level empirical model comparison table."""
     common_ids = sorted(set(wba_map).intersection(sba_map))
     rows: list[dict] = []
 
@@ -186,7 +187,7 @@ def build_comparison_table(
 
 
 def save_waic_difference_plot(df: pd.DataFrame, output_path: Path) -> None:
-    """Plot participant-level WAIC difference (WAIC_SBA - WAIC_WBA)."""
+    """Plot participant level WAIC difference (WAIC_SBA - WAIC_WBA)."""
     plot_df = df.copy()
     plot_df["waic_difference"] = plot_df["WAIC_sba"] - plot_df["WAIC_wba"]
 
@@ -204,7 +205,7 @@ def save_waic_difference_plot(df: pd.DataFrame, output_path: Path) -> None:
 
 
 def save_waic_difference_histogram(df: pd.DataFrame, output_path: Path) -> None:
-    """Plot the distribution of participant-level WAIC differences."""
+    """Plot the distribution of participant level WAIC differences."""
     plot_df = df.copy()
     plot_df["waic_difference"] = plot_df["WAIC_sba"] - plot_df["WAIC_wba"]
 

@@ -1,9 +1,9 @@
 """Create aggregate empirical posterior predictive checks for SBA and WBA.
 
-This script reuses saved no-pooling empirical Stan outputs for all participants,
-extracts posterior predictive draws (`y_rep`), aggregates them across the full
-empirical dataset, and produces a small set of report-friendly posterior
-predictive checks for SBA and WBA.
+This script reuses saved no pooling empirical Stan outputs for all participants.
+It extracts posterior predictive draws (`y_rep`).
+It combines them across the full dataset.
+It produces a small set of simple checks for SBA and WBA.
 
 Run from the project root:
     python scripts/16_ppc_empirical_aggregate.py
@@ -189,7 +189,7 @@ def save_distribution_plot(
     include_sba: bool = False,
     sba_summary: pd.DataFrame | None = None,
 ) -> None:
-    """Save an observed-vs-predictive discrete distribution comparison plot."""
+    """Save an observed vs predictive discrete distribution plot."""
     x_values = observed_summary["value"].to_numpy(dtype=float)
 
     fig, ax = plt.subplots(figsize=(9, 5.5))

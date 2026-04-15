@@ -1,11 +1,10 @@
 """Load and explore all CSV datasets for the Bayesian social conformity project.
 
-This script:
-1. Loads every CSV file from the data/ directory.
-2. Prints core exploratory information for each dataset.
-3. Adds derived columns for rating change and social gap.
-4. Saves summary tables to results/exploration/.
-5. Saves basic plots to figures/exploration/<dataset_name>/.
+This script loads every CSV file from `data/`.
+It prints basic information for each dataset.
+It adds rating change and social gap.
+It saves summary tables.
+It saves basic plots.
 
 Run from the project root:
     python scripts/00_load_and_explore.py
@@ -58,7 +57,7 @@ def build_summary_table(
     rating_range_summary: dict[str, int],
     participant_trials: pd.Series,
 ) -> pd.DataFrame:
-    """Assemble a one-row summary table for a dataset."""
+    """Assemble a one row summary table for a dataset."""
     summary = {
         "filename": filename,
         "n_rows": len(df),

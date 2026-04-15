@@ -1,7 +1,7 @@
-"""Create report-friendly plots for the 2x2 synthetic model-recovery results.
+"""Create clear plots for the 2x2 synthetic model recovery results.
 
-This script reads the saved recovery summary table and posterior summary CSVs,
-then creates a small set of clear visualizations for model recovery.
+This script reads the saved recovery summary table and posterior summary CSVs.
+It then creates a small set of plots for model recovery.
 
 Run from the project root:
     python scripts/08b_plot_model_recovery.py
@@ -206,7 +206,7 @@ def save_wba_parameter_comparison_plot(
 
 
 def main() -> None:
-    """Read saved summaries and create the model-recovery figures."""
+    """Read saved summaries and create the model recovery figures."""
     project_root = Path(__file__).resolve().parents[1]
     results_dir = project_root / "results"
     recovery_summary_path = results_dir / "model_recovery" / "model_recovery_summary.csv"

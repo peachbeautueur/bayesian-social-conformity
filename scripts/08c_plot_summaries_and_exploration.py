@@ -1,8 +1,8 @@
-"""Create additional report-friendly empirical exploration figures.
+"""Create extra empirical exploration figures.
 
-This script uses the empirical Simonsen dataset to generate a small set of
-clean figures for reporting. Synthetic recovery figures are handled separately
-in the model-recovery plotting scripts to avoid duplication.
+This script uses the Simonsen dataset to generate a small set of figures.
+Synthetic recovery figures are handled in other scripts.
+That keeps this script focused on empirical exploration.
 
 Run from the project root:
     python scripts/08c_plot_summaries_and_exploration.py
@@ -100,7 +100,7 @@ def save_rating_distribution_comparison(df: pd.DataFrame, output_path: Path) -> 
 
 
 def main() -> None:
-    """Create report-friendly empirical exploration figures."""
+    """Create clear empirical exploration figures."""
     project_root = Path(__file__).resolve().parents[1]
     exploration_report_dir = project_root / "figures" / "exploration_report"
     simonsen_path = project_root / "data" / "Simonsen_clean.csv"

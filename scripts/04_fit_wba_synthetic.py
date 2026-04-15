@@ -1,8 +1,9 @@
 """Fit the first Stan WBA model to synthetic WBA data.
 
-This script loads the synthetic WBA dataset, prepares Stan inputs, fits the
-lecture-inspired Weighted Bayesian Agent model with cmdstanpy, and saves basic
-fit outputs for inspection.
+This script loads the synthetic WBA dataset.
+It prepares the Stan input.
+It fits the Weighted Bayesian Agent model with cmdstanpy.
+It saves basic fit outputs.
 
 Run from the project root:
     python scripts/04_fit_wba_synthetic.py
@@ -162,13 +163,13 @@ def summarize_posterior(summary: pd.DataFrame) -> pd.DataFrame:
 
 
 def count_divergences(fit) -> int:
-    """Count total divergent transitions across all post-warmup draws."""
+    """Count total divergent transitions across all post warmup draws."""
     sampler_diagnostics = fit.method_variables()
     return int(sampler_diagnostics["divergent__"].sum())
 
 
 def summarize_rhat(fit) -> tuple[float, float]:
-    """Return the max and median R-hat values when available."""
+    """Return the max and median R hat values when available."""
     summary = fit.summary()
     if "R_hat" not in summary.columns:
         return float("nan"), float("nan")
