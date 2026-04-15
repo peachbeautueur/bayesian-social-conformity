@@ -1,0 +1,35 @@
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*.pyo
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Compiled Stan executables
+stan/*.exe
+
+# Raw CmdStan outputs from synthetic fits
+results/fits/sba_model-*.csv
+results/fits/sba_model-*-stdout.txt
+results/fits/wba_model-*.csv
+results/fits/wba_model-*-stdout.txt
+
+# Raw CmdStan outputs from empirical fits
+results/fits/empirical/sba_model-*.csv
+results/fits/empirical/sba_model-*-stdout.txt
+results/fits/empirical/wba_model-*.csv
+results/fits/empirical/wba_model-*-stdout.txt
+
+# Per-participant raw empirical fit folders are large and fully reproducible
+results/fits/empirical/sba_per_participant/
+results/fits/empirical/wba_per_participant/
+
+# Leave summary CSVs and report figures tracked on purpose.
+# Keep scripts/, stan/*.stan, compact results/*.csv, and figures/*.png.

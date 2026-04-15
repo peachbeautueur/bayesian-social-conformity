@@ -187,29 +187,42 @@ def save_observed_vs_predicted_plot(summary_df: pd.DataFrame, output_path: Path)
 
 
 def save_residual_histogram(summary_df: pd.DataFrame, output_path: Path) -> None:
-    """Save a residual comparison histogram for SBA and WBA."""
-    fig, ax = plt.subplots(figsize=(8.5, 5.5))
-    ax.hist(
-        summary_df["wba_residual"],
-        bins=12,
-        alpha=0.65,
+    """Save stacked residual histograms for SBA and WBA using the same x-axis range."""
+    wba_residuals = summary_df["wba_residual"].to_numpy(dtype=float)
+    sba_residuals = summary_df["sba_residual"].to_numpy(dtype=float)
+    all_residuals = np.concatenate([wba_residuals, sba_residuals])
+    bin_edges = np.histogram_bin_edges(all_residuals, bins=12)
+    x_min = float(all_residuals.min()) - 0.05
+    x_max = float(all_residuals.max()) + 0.05
+
+    fig, axes = plt.subplots(2, 1, figsize=(8.5, 7.0), sharex=True)
+
+    axes[0].hist(
+        wba_residuals,
+        bins=bin_edges,
         color="#c65f46",
         edgecolor="black",
-        label="WBA residual",
+        alpha=0.8,
     )
-    ax.hist(
-        summary_df["sba_residual"],
-        bins=12,
-        alpha=0.45,
+    axes[0].axvline(0, color="black", linestyle="--", linewidth=1.5)
+    axes[0].set_title(f"WBA residuals (mean = {wba_residuals.mean():.3f})")
+    axes[0].set_ylabel("Count")
+    axes[0].set_xlim(x_min, x_max)
+
+    axes[1].hist(
+        sba_residuals,
+        bins=bin_edges,
         color="#4f728c",
         edgecolor="black",
-        label="SBA residual",
+        alpha=0.8,
     )
-    ax.axvline(0, color="black", linestyle="--", linewidth=1.5)
-    ax.set_title("Participant-Level Residuals for Mean Rating Change")
-    ax.set_xlabel("Predicted mean change - observed mean change")
-    ax.set_ylabel("Count")
-    ax.legend(frameon=False)
+    axes[1].axvline(0, color="black", linestyle="--", linewidth=1.5)
+    axes[1].set_title(f"SBA residuals (mean = {sba_residuals.mean():.3f})")
+    axes[1].set_xlabel("Predicted mean change - observed mean change")
+    axes[1].set_ylabel("Count")
+    axes[1].set_xlim(x_min, x_max)
+
+    fig.suptitle("Participant-Level Residuals for Mean Rating Change", y=0.98)
     fig.tight_layout()
     fig.savefig(output_path, dpi=300)
     plt.close(fig)
